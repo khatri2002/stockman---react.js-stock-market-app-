@@ -123,7 +123,7 @@ function TableSection() {
                                     <span>
                                         {index.start + 1}
                                         -
-                                        {index.end} of {dateRange.length}
+                                        {index.end > dateRange.length ? dateRange.length : index.end} of {dateRange.length}
                                     </span>
                                     <div className={styles.btnContainer}>
                                         <button type="button" onClick={handlePrev} disabled={index.start === 0}>Previous</button>
