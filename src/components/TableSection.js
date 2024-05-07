@@ -23,12 +23,13 @@ function TableSection() {
                 const formattedData = formatMarketData(stockData);
                 setStockData(formattedData);
 
-                const startIndex = 0;
-                const endIndex = formattedData.length < 7 ? formattedData.length : 7;
-                setIndex({ start: startIndex, end: endIndex });
-
                 const dateRange = get_date_range(stockData);
                 setDateRange(dateRange);
+
+                const startIndex = 0;
+                const endIndex = dateRange.length < 7 ? dateRange.length : 7;
+                setIndex({ start: startIndex, end: endIndex });
+
 
                 setShowLoading(false);
             })
@@ -39,7 +40,9 @@ function TableSection() {
 
     const handleNext = () => {
         let startIndex = index.start + 7;
-        let endIndex = stockData.length < index.end + 7 ? stockData.length : index.end + 7;
+        // let endIndex = dateRange.length < index.end + 7 ? dateRange.length : index.end + 7;
+        let endIndex = index.end + 7;
+        console.log(startIndex, endIndex);
         setIndex({
             start: startIndex,
             end: endIndex
@@ -121,11 +124,11 @@ function TableSection() {
                                     <span>
                                         {index.start + 1}
                                         -
-                                        {index.end} of {stockData.length}
+                                        {index.end} of {dateRange.length}
                                     </span>
                                     <div className={styles.btnContainer}>
                                         <button type="button" onClick={handlePrev} disabled={index.start === 0}>Previous</button>
-                                        <button type="button" onClick={handleNext} disabled={index.end === stockData.length}>Next</button>
+                                        <button type="button" onClick={handleNext} disabled={index.end > dateRange.length}>Next</button>
                                     </div>
                                 </div>
                             </>
