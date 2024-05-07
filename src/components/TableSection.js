@@ -42,7 +42,6 @@ function TableSection() {
         let startIndex = index.start + 7;
         // let endIndex = dateRange.length < index.end + 7 ? dateRange.length : index.end + 7;
         let endIndex = index.end + 7;
-        console.log(startIndex, endIndex);
         setIndex({
             start: startIndex,
             end: endIndex

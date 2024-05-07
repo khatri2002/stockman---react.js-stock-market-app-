@@ -38,7 +38,6 @@ export const get_date_range = (stockData) => {
     const dates = stockData.map(obj => new Date(obj.date));
     const maxDate = new Date(Math.max.apply(null, dates));
     const minDate = new Date(Math.min.apply(null, dates));
-    console.log(minDate, maxDate);
     let dateRange = [];
     for (let date = new Date(minDate); date <= maxDate; date.setDate(date.getDate() + 1)) {
         dateRange.push(moment(date).format('DD-MM-YYYY'));
